@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io("http://localhost:3000");
+
+        socket.on("ketqua", function(data){
+            $("#ketqua").html(data.HOTEN);
+        });
+
+            $(document).ready(function(){
+
+                $("#dangky").click(function(){
+                var hoten = $("#txtName").val();
+                socket.emit("dangky", hoten);
+
+            });
+                
+            });
+     </script>
+        
+</head>
+<body>
+    <input type="text" id="txtName"/>
+    <button id="dangky">Dang ky </button>
+    <h2 id="ketqua"></h2>
+</body>
+</html>
